@@ -1,7 +1,0 @@
-a development team is building a library management system in python (minimal only.. just enuf features that a dev can devolop in an hour.. but good enuf to showcase mvp).
-tasks:
-a) Create a git repo. create a branch named feature/book-search, modify a python file, commit the changes, merge the branch into main, and displayu the commmit history
-b) Configure a githhub actons workflow that runs a python script  whenever code is pushed into main bracnh, Include a step to install dependencies and display the workflow execution status
-c) JIRA project - Create a scrum project for LMS. Add 3 user storesi for book search, issue/return andmember reg. Adsign prorituies and story points, then move the isseus throght workflow
-
-do this much, Ill give 3 other steps
