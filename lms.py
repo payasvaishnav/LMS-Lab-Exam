@@ -41,6 +41,14 @@ def find_book(data, book_id):
     raise ValueError("Book not found")
 
 
+def search_books(data, query):
+    query = query.strip().casefold()
+    if not query:
+        raise ValueError("Search query cannot be empty")
+    return [book for book in data["books"]
+            if query in book["title"].casefold() or query in book["author"].casefold()]
+
+
 def return_book(data, book_id):
     book = find_book(data, book_id)
     if book["member_id"] is None:
@@ -53,6 +61,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("books", help="List books")
+    commands.add_parser("search", help="Search books by title or author").add_argument("query")
     commands.add_parser("members", help="List registered members")
     commands.add_parser("register", help="Register member").add_argument("name")
     issue = commands.add_parser("issue", help="Issue an available book")
@@ -64,6 +73,8 @@ def main():
         data = json.loads(DATA_FILE.read_text(encoding="utf-8")) if DATA_FILE.exists() else new_library()
         if args.command == "books":
             result = data["books"]
+        elif args.command == "search":
+            result = search_books(data, args.query)
         elif args.command == "members":
             result = data["members"]
         elif args.command == "register":
