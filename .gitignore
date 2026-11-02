@@ -2,3 +2,5 @@ __pycache__/
 *.py[cod]
 .venv/
 library.json
+a.txt
+b.txt
