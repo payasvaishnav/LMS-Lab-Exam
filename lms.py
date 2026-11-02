@@ -6,6 +6,15 @@ from pathlib import Path
 DATA_FILE = Path(__file__).with_name("library.json")
 
 
+def calculate_fine(overdue_days):
+    """Return the fine in rupees: Rs 5 per whole overdue day, with no grace period."""
+    if isinstance(overdue_days, bool) or not isinstance(overdue_days, int):
+        raise TypeError("Overdue days must be an integer")
+    if overdue_days < 0:
+        raise ValueError("Overdue days cannot be negative")
+    return overdue_days * 5
+
+
 def new_library():
     return {"books": [
         {"id": 1, "title": "Clean Code", "author": "Robert Martin", "member_id": None},
