@@ -6,6 +6,7 @@ Data is saved in `library.json` (ignored by Git). Intended for one local user.
 ```sh
 python -m pip install -r requirements.txt
 python lms.py books
+python lms.py search "python"
 python lms.py register "Asha"
 python lms.py issue 1 1
 python lms.py return 1
